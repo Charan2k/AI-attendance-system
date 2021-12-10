@@ -4,9 +4,11 @@
     box-sizing: border-box;
   }
   body {
-    background: url('img/bg.jpg') no-repeat center;
+    background:#2c2623;
+    color: #f55014;
     background-size: cover;
-    font-family: sans-serif;
+    background-repeat: no-repeat;
+    font-family:sans-serif;
   }
   .login-wrapper {
     height: 100vh;
@@ -117,6 +119,15 @@
     height: 100%;
     opacity: 1;
   }
+
+  .register{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 2.5rem;
+}
+
   .close {
     position: absolute;
     right: 1.5rem;
