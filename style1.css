@@ -43,9 +43,12 @@ input#name{
     rgba(0,0,0,0.3);
 }
 input#submit{
-    width: 200px;
-    padding: 7px;
-    font-size: 16px;
+    width: 150px;
+    margin-bottom: 10px;
+    margin-left: 79px;
+    border-radius: 7px;
+    padding: 8px;
+    font-size: 17px;
     font-family: sans-serif;
     font-weight: 600;
     border: #ff652f;
