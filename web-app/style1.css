@@ -5,7 +5,7 @@
 
 }
 body{
-    background-color: #2c2623;
+    background-color: #1b1a1a;
     background-size: cover;
     font-family: sans-serif;
 }
@@ -14,23 +14,28 @@ div.main{
     margin: 100px auto 0px auto;
 }
 h2{
+    font-weight: bold;
+    font-size: 40px;
     text-align: center;
     padding: 20px;
     font-family: sans-serif;
+    color: #e4380d;
 }
 div.register{
-    background-color:  rgba(0,0,0,0.7);
-    border-radius: 10px;
+    background-color:rgba(255,255,255, 0.08);
+    border-radius: 19px;
+    height: 435px;
     color: #fff;
-    box-shadow: 0 15px 25px rgba(0,0,0,0.5);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
   }
 form#register{
     margin: 40px;
 }
 label{
-    font-family: sans-serif;
+   font-family: sans-serif;
     font-size: 18px;
     font-style: normal;
+    margin-top: 1px;
 }
 input#name{
     width: 300px;
@@ -42,16 +47,18 @@ input#name{
     box-shadow: inset 1px 1px 5px 
     rgba(0,0,0,0.3);
 }
-input#submit{
+.submit{
     width: 150px;
-    margin-bottom: 10px;
-    margin-left: 79px;
+    margin-left:110px;
+    margin-top: 180px;
     border-radius: 7px;
+    text-decoration: none;
     padding: 8px;
-    font-size: 17px;
+    font-size: 22px;
     font-family: sans-serif;
-    font-weight: 600;
+    font-weight: 550;
     border: #ff652f;
-    background-color: #ff652f;
+    background-color: #f74215;
+    box-shadow: #1b1a1a;
     color: #fff;
 }
