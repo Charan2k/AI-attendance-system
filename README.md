@@ -1,5 +1,5 @@
 # Project Overview
-    ## The central objective of this project is to capture multiple faces with maximum accuracy.
+## The central objective of this project is to capture multiple faces with maximum accuracy.
     Build an attendance system using computer vision. 
     The user should be able to feed the system with a live stream of 
     video or an image and the attendance for that particular audience 
