@@ -18,16 +18,16 @@
     
  # TECH STACK
  
-     # Front-End
-         - HTML,CSS,JavaScript
-         -  Flask Micro Web-FrameWork
-    
-     # Back-End
-         - Python
-         - AWS-3 DB
-         - Face Recognnition (PyPi)
-         - SQL
-         - Open CV
+  # Front-End
+      - HTML,CSS,JavaScript
+      -  Flask Micro Web-FrameWork
+
+  # Back-End
+      - Python
+      - AWS-3 DB
+      - Face Recognnition (PyPi)
+      - SQL
+      - Open CV
 
   
    
