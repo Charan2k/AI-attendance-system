@@ -2,15 +2,10 @@ from flask import Flask
 from flask_cors import CORS
 from flask import request, redirect
 from flask.templating import render_template
-import mysql.connector
+import sqlite3
 
-mydb = mysql.connector.connect(
-  host="ai-attendance-devjam.c92vkw0v7cnn.ap-south-1.rds.amazonaws.com",
-  user="admin",
-  passwd="admin123",
-  database="test1"
-)
-cursor = mydb.cursor()
+con = sqlite3.connect('../attendance-system.db',check_same_thread=False)
+cursor = con.cursor()
 
 app = Flask('AI-Attendance-System')
 CORS(app)
@@ -25,16 +20,18 @@ def home():
 def login():
     username = request.form.get('username')
     password = request.form.get('password')
-    # print(username,password)
-    cursor.execute('SELECT * FROM faculty WHERE name = (%s) AND password = (%s)',(username,password,))
+    cursor.execute('SELECT * FROM faculty WHERE name=:username AND password=:password',{"username":username, "password":password})
     account = cursor.fetchone()
-    print(account)
-    for x in cursor:
-        print(x)
     if account:
-        return "Logged in"
+        query = 'select * from attendance'
+        cursor.execute(query)
+        response = cursor.fetchall()
+        for x in response:
+            print(x)
+        return render_template('attendance.html',response=response)
+
     else:
-        return "Nikal"
+        return redirect('/home')
 
 @app.route('/register')
 def register():
@@ -48,10 +45,4 @@ def capture():
 def upload():
     return 'Uploaded'
 
-# @app.after_request
-# def after_request(response):
-#   response.headers.add('Access-Control-Allow-Origin', '*')
-#   response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
-#   response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
-#   return response
 
