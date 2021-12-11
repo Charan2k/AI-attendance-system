@@ -1,5 +1,7 @@
 # AI-attendance-system
-
+    - 1 :  Register yourself and capture face data.
+    - 2 :  Faculty in-charge can allow certain restrictions/- permission in that case the system must be able to retain the student’s attendance.
+    - 3 :  A  student, upon showing his/her face( kind of login portal) can access his/her attendence data
 
 
 # Approach
