@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="photocap.css">
+    <title>PhotoCapture</title>
+</head>
+<center>
+
+<body>
+    <div class="camera">
+        <button id="start-camera">Start Camera</button>
+    </div>
+    <div>
+        <video id="video" width="720" height="480" autoplay></video>
+    </div>
+    <div class="click">
+        <button id="click-photo">Click Photo</button>
+    </div>
+    <div>
+        <canvas id="canvas" width="720" height="480"></canvas>
+    </div>
+    <div>
+        <button id="download" onclick="downloadCanvas()">Download</button>
+    </div>
+</body>
+</center>
+<script>
+    let camera_button = document.querySelector("#start-camera");
+    let video = document.querySelector("#video");
+    let click_button = document.querySelector("#click-photo");
+    let canvas = document.querySelector("#canvas");
+
+
+    camera_button.addEventListener('click', async function () {
+        //Accessing the camera
+        let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+
+        //Streaminng the real time data inoder to see the preview
+        video.srcObject = stream;
+    });
+
+    function downloadCanvas() {
+        // get canvas data  
+        const image = canvas.toDataURL("image/jpeg");
+
+        // create temporary link  
+        const tmpLink = document.createElement('a');
+        tmpLink.download = 'image.jpeg'; // set the name of the download file 
+        tmpLink.href = image;
+
+        //Simulate that u are clicking the link in order  to download
+        tmpLink.click();
+    }
+
+    click_button.addEventListener('click', function () {
+        //displaying the photo after clicking
+        canvas.getContext('2d').drawImage(video, 0, 0, 720, 480);
+        let image_data_url = canvas.toDataURL('image/jpeg');
+
+        // data url of the image, basically used to send the data to server to store there
+        console.log(image_data_url);
+    });
+</script>
+
+</html>

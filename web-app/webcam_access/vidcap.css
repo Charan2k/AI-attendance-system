@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    background:#000000;
+    color: #0ab0f1;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family:sans-serif;
+  }
+  
+  #start-camera{
+    display: block;
+    margin-left:  20px;
+    margin-top:2px;
+    border:none;
+    outline: none;
+    background: #f05006d8;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  #video{
+    position:relative;
+    height: 480px;
+    width: 790px;
+    top: 10px;
+    border: 3px solid #ECECEC;
+    box-sizing: border-box
+
+  }
+
+  #start-record{
+    display: block;
+    position: absolute;
+    margin-left:290px;
+    margin-top:10px;
+    border:none;
+    outline: none;
+    background: #f05006d8;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+
+  }
+
+  #stop-record{
+    display: block;
+    margin-left:600px;
+    margin-top:10px;
+    border:none;
+    outline: none;
+    background: #f05006d8;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  #download-video{
+      display: block;
+    margin-left:  20px;
+    margin-top:10px;
+    border:none;
+    outline: none;
+    background: #f05006d8;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
