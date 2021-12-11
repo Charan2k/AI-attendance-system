@@ -1,3 +1,6 @@
+# Project Overview
+    Build an attendance system using computer vision. The user should be able to feed the system with a live stream of video or an image and the attendance for that particular audience should be marked automatically in real time. The user should be able to verify the same before submitting.
+
 # AI-attendance-system
     - 1 :  Register yourself and capture face data.
     - 2 :  Faculty in-charge can allow certain restrictions/- permission in that case the system must be able to retain the student’s attendance.
