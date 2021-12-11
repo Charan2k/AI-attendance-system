@@ -14,7 +14,7 @@
     
    # Back-End
     - Storing the data in Faculty and Student Login
-    - Connecting  to AWS-3 to store data
+    - Connecting  to AWS-S3 to store data
     
     
     
@@ -26,7 +26,7 @@
 
   # Back-End
       - Python
-      - AWS-3 DB
+      - AWS-S3 Storage
       - Face Recognnition (PyPi)
       - SQL
       - Open CV
