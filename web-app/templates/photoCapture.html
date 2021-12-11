@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="photocap.css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles/photocap.css') }}">
     <title>PhotoCapture</title>
 </head>
 <center>
@@ -17,6 +17,9 @@
     <div>
         <video id="video" width="720" height="480" autoplay></video>
     </div>
+    <div>
+        Roll No: <input type="text" id="rollno" name="rollno">
+    </div>
     <div class="click">
         <button id="click-photo">Click Photo</button>
     </div>
@@ -26,6 +29,14 @@
     <div>
         <button id="download" onclick="downloadCanvas()">Download</button>
     </div>
+    <div>        
+        <input type="file" id="fileUpload">    
+     </div>    
+     <div> 
+        <button onclick="s3upload()">Submit</button>    
+     </div>     
+     <progress max=”100” value=”0”></progress>
+
 </body>
 </center>
 <script>
@@ -33,7 +44,6 @@
     let video = document.querySelector("#video");
     let click_button = document.querySelector("#click-photo");
     let canvas = document.querySelector("#canvas");
-
 
     camera_button.addEventListener('click', async function () {
         //Accessing the camera
@@ -46,20 +56,58 @@
     function downloadCanvas() {
         // get canvas data  
         const image = canvas.toDataURL("image/jpeg");
+        // function to upload image to s3 bucket
+        uploadImage(image);
 
         // create temporary link  
         const tmpLink = document.createElement('a');
-        tmpLink.download = 'image.jpeg'; // set the name of the download file 
+        let fname = document.getElementById("rollno").value;
+        tmpLink.download = fname+'.jpeg'; // set the name of the download file 
         tmpLink.href = image;
 
         //Simulate that u are clicking the link in order  to download
         tmpLink.click();
     }
 
+    function s3upload() {
+    var files = document.getElementById('fileUpload').files;
+    if (files) 
+    {
+        var bucketRegion = 'ap-south-1';
+        var bucketName = 'student-faces-devjam';
+        var file = files[0];
+        var fileName = file.name;
+        var filePath = 'student-faces/' + fileName;
+        var fileUrl = 'https://' + bucketRegion + '.amazonaws.com/my-    first-bucket/' +  filePath;
+        s3.upload({
+        Key: filePath,
+        Body: file,
+        ACL: 'public-read'
+        }, function(err, data) {
+        if(err) {
+        reject('error');
+        }
+        alert('Successfully Uploaded!');
+        }).on('httpUploadProgress', function (progress) {
+        var uploaded = parseInt((progress.loaded * 100) / progress.total);
+        $("progress").attr('value', uploaded);
+    });
+    }
+    };
+
+    function uploadImage(image) {
+        const formData = new FormData();
+        formData.append('image', image);
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://127.0.0.1:5000/upload', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send(formData);
+    }
+
     click_button.addEventListener('click', function () {
         //displaying the photo after clicking
         canvas.getContext('2d').drawImage(video, 0, 0, 720, 480);
-        let image_data_url = canvas.toDataURL('image/jpeg');
+        let image_data_url = canvas.toDataURL(`image/jpeg`);
 
         // data url of the image, basically used to send the data to server to store there
         console.log(image_data_url);

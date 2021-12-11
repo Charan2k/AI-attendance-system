@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href= "{{ url_for('static',filename='styles/style.css') }}">
     <title>Attendance Login Form</title>
 </head>
 
@@ -52,17 +52,11 @@
             <div class="student">
                 <form action="" class="form">
                     <h2>Student Attendance</h2>
-                          <a href="photoCapture.html"
-                        target="_blank"
-                        class="lb"
-                        style="color: blanchedalmond;
-                        position: absolute;
-                        left: 139px;
-                        text-align:center;">Login</a>
+                          <a href="/photoCapture"target="_blank" class="lb" style="color: blanchedalmond; position: absolute; left: 139px; text-align:center;">Login</a>
                 </form>
             <div>
             <span>
-                <a href="index1.html" style="color:wheat ; font-size: medium;
+                <a href="/register" style="color:wheat ; font-size: medium;
                     position: absolute;
                     top: 12.45cm;
                     left:115px;"><b>Register as Student</b></a>
