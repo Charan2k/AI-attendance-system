@@ -1,7 +1,16 @@
 from flask import Flask
 from flask_cors import CORS
+from flask import request, redirect
 from flask.templating import render_template
-from flask_cors.decorator import cross_origin
+import mysql.connector
+
+mydb = mysql.connector.connect(
+  host="ai-attendance-devjam.c92vkw0v7cnn.ap-south-1.rds.amazonaws.com",
+  user="admin",
+  passwd="admin123",
+  database="test1"
+)
+cursor = mydb.cursor()
 
 app = Flask('AI-Attendance-System')
 CORS(app)
@@ -11,6 +20,21 @@ app.run(debug=True)
 def home():
     # return 'okay'
     return render_template('index.html')
+
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.form.get('username')
+    password = request.form.get('password')
+    # print(username,password)
+    cursor.execute('SELECT * FROM faculty WHERE name = (%s) AND password = (%s)',(username,password,))
+    account = cursor.fetchone()
+    print(account)
+    for x in cursor:
+        print(x)
+    if account:
+        return "Logged in"
+    else:
+        return "Nikal"
 
 @app.route('/register')
 def register():
