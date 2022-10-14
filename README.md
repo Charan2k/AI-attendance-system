@@ -11,14 +11,15 @@
     - 2 :  Faculty in-charge can allow certain restrictions/- 
     - permission in that case the system must be able to retain the student’s attendance.
     - 3 :  A  student, upon showing his/her face( kind of l
-    - ogin portal) can access his/her attendence data
+    - ogin portal) can access his/her attendance data
 
 
 # Approach
    # Front-End
     - Faculty Login
-    - Student Attendence 
+    - Student Attendance 
     - Student Registration
+    - Student Verification
     
    # AI - Services
     - AI Time Interal Based Validation
@@ -39,9 +40,15 @@
   # Back-End
       - Python
       - AWS-S3 Storage
-      - Face Recognnition (PyPi)
+      - Face Recognition (PyPi)
       - SQL
       - Open CV
+# Advantages of AI attendance over Manual form of Attendance
 
-  
+        - Any student can access his/her attendance records at any time and plan accordingly.
+        - There will not be any form of tampering with one's attendance.
+        - The records will be secure.
+# Applications : 
+
+    The AI-Attendance-System can be used in schools, colleges, workplaces, tournaments, and competitions
    
